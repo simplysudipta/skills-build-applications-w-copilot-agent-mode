@@ -1,7 +1,7 @@
 import express, { Express, Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import connectDB from './db';
+import connectDB from './config/database';
 import usersRouter from './api/users';
 import teamsRouter from './api/teams';
 import activitiesRouter from './api/activities';
