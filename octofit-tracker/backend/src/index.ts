@@ -2,6 +2,11 @@ import express, { Express, Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import connectDB from './db';
+import usersRouter from './api/users';
+import teamsRouter from './api/teams';
+import activitiesRouter from './api/activities';
+import leaderboardRouter from './api/leaderboard';
+import workoutsRouter from './api/workouts';
 
 dotenv.config();
 
@@ -21,7 +26,14 @@ app.get('/api/health', (req: Request, res: Response) => {
   res.json({ status: 'OK', message: 'Octofit Tracker API is running' });
 });
 
-// API routes placeholder
+// API routes
+app.use('/api/users', usersRouter);
+app.use('/api/teams', teamsRouter);
+app.use('/api/activities', activitiesRouter);
+app.use('/api/leaderboard', leaderboardRouter);
+app.use('/api/workouts', workoutsRouter);
+
+// 404 handler
 app.use('/api', (req: Request, res: Response) => {
   res.status(404).json({ error: 'Route not found' });
 });
